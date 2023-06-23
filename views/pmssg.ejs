@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles-for-messages.css">
+</head>
+<body>
+    <div class="messagebox">
+        <h5><%=user%>'s</h5> 
+        <h1>Chat with <%=name%> </h1>
+        <form action="/chat/<%=name%>" method="post">
+            <input type="text" name="message">
+            <input type="submit" value="send">
+        </form>
+        <div class="button-container">
+            <button onclick="location.reload()">Check new messages!</button>
+        </div>
+        <%  for(var i=0;i<arr.length;i++) {%>
+            <% if(arr[i].name1==user) {%>
+                <div class="p1-container">
+                    <p class="p1"><%= arr[i].message %></p>
+                </div>         
+                <% }%>
+            <% if(arr[i].name1!=user){%>
+                <div class="p2-container">
+                    <p class="p2"><%= arr[i].message %></p>
+                </div>
+            <% }%>
+        <% } %>
+        
+    </div>
+    
+</body>
+</html>

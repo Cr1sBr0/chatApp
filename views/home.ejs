@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+body {
+  background-color: #f0f0f0;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+li button {
+  background-color: #3aca78;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+li button a {
+  text-decoration: none;
+  color: #fff;
+}
+    </style>
+</head>
+<body>
+    <h1><%=user%>'s chats</h1>
+    <div class="box">
+        <form action="/<%=user%>" method="post"> 
+            <input type="text" name="newName">
+            <input type="submit" value="Add friend">
+        </form>
+        <% if(flag) {%>
+        <p>this user doesnt exist</p>
+        <%}%>
+        <ul>
+          <% for(var i=0;i<friends.length;i++) { %>
+          <li><%=friends[i]%> <button><a href="/chat/<%=friends[i]%>" >chat</a></button></li>
+          <% } %>
+        </ul>
+    </div>
+</body>
+</html>
